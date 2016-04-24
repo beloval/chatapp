@@ -49,7 +49,7 @@ class ChartController extends Controller{
             return new Response('Error in conversation:'.$userid,404);
 
 
-        $link = mysqli_connect('localhost', 'root', 'belov', 'messenger');
+        $link = mysqli_connect('localhost', 'root', 'belov', 'messenger');//need to send in external file
         mysqli_set_charset($link,'utf8');
 
 //        $sql= "select  con.id, con.create_at, con.message_count, ms.text, ms.created_at, ms.sender, ms.receiver FROM message AS ms ".
@@ -211,7 +211,7 @@ class ChartController extends Controller{
 //
 
 
-        return new Response('successful',201);
+        return new Response('successful :HTTP/1.1 201 Created',201);
 
     }
 
