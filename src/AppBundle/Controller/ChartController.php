@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: lenovo
@@ -7,6 +8,8 @@
  */
 
 namespace AppBundle\Controller;
+
+
 use AppBundle\Entity\User;
 use AppBundle\Entity\Conversation;
 use Doctrine\DBAL\Driver\PDOException;
@@ -49,7 +52,13 @@ class ChartController extends Controller{
             return new Response('Error in conversation:'.$userid,404);
 
 
-        $link = mysqli_connect('localhost', 'root', 'belov', 'messenger');//need to send in external file
+// DB connection
+        $DB_HOST=$this->container->getParameter('database_host');
+        $DB_USERNAME=$this->container->getParameter('database_user');
+        $DB_PASS=$this->container->getParameter('database_password');
+        $DB_NAME=$this->container->getParameter('database_name');
+
+        $link = mysqli_connect($DB_HOST , $DB_USERNAME, $DB_PASS, $DB_NAME);
         mysqli_set_charset($link,'utf8');
 
 //        $sql= "select  con.id, con.create_at, con.message_count, ms.text, ms.created_at, ms.sender, ms.receiver FROM message AS ms ".
@@ -121,8 +130,12 @@ class ChartController extends Controller{
 //        print_r($text);
 //        echo "\n";
        //  $columns = preg_replace('/[^a-z0-9_]+/i','',array_keys($input));
+        $DB_HOST=$this->container->getParameter('database_host');
+        $DB_USERNAME=$this->container->getParameter('database_user');
+        $DB_PASS=$this->container->getParameter('database_password');
+        $DB_NAME=$this->container->getParameter('database_name');
 
-        $link = mysqli_connect('localhost', 'root', 'belov', 'messenger');//two time use need to get in external file
+        $link = mysqli_connect($DB_HOST , $DB_USERNAME, $DB_PASS, $DB_NAME);
         mysqli_set_charset($link,'utf8');
 
         //cheching users present in other way constraint will evoke
