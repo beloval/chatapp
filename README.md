@@ -27,3 +27,5 @@ Installation: copy folder with project, install symfony follow links:
 http://symfony.com/doc/current/book/installation.html
 
 run php bin/console server:run in project folder
+
+Need to install dataBASE settings in file : chatapp/app/config/parameters.yml -> change follow your Mysql configuration.
